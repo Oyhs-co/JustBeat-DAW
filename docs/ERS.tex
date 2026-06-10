@@ -1,0 +1,287 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{longtable}
+\usepackage{enumitem}
+
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{softblue}{HTML}{E8F1FA}
+
+\title{\textbf{\textcolor{primary}{Especificación de Requisitos de Software}}\\
+\vspace{0.3cm}
+JustBeat-DAW\\
+\large 8-bit Digital Audio Workstation}
+\author{Equipo de Desarrollo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%====================================================
+\section{Introducción}
+
+\subsection{Propósito}
+
+Este documento define los requisitos funcionales y no funcionales del sistema \textbf{JustBeat-DAW}, una Digital Audio Workstation orientada a producción musical 8-bit (chiptune).
+
+El documento servirá como base contractual para diseño, desarrollo, pruebas y evolución futura del sistema.
+
+\subsection{Alcance}
+
+JustBeat-DAW permitirá:
+
+\begin{itemize}
+\item Crear y gestionar proyectos musicales.
+\item Generar sonido 8-bit mediante síntesis digital.
+\item Utilizar entrada y grabación MIDI.
+\item Soportar sistema extensible de plugins.
+\item Exportar audio y MIDI.
+\item Gestionar múltiples pistas y buses de audio.
+\end{itemize}
+
+\subsection{Definiciones}
+
+\begin{itemize}
+\item \textbf{DAW}: Digital Audio Workstation.
+\item \textbf{Chiptune}: Música basada en síntesis de consolas retro.
+\item \textbf{MIDI}: Musical Instrument Digital Interface.
+\item \textbf{Plugin}: Módulo extensible que añade funcionalidad.
+\item \textbf{Audio Graph}: Grafo de procesamiento de señal.
+\end{itemize}
+
+%====================================================
+\section{Descripción General}
+
+\subsection{Perspectiva del Producto}
+
+Aplicación de escritorio modular con:
+
+\begin{itemize}
+\item Arquitectura limpia.
+\item Motor de audio propio.
+\item Soporte MIDI.
+\item Sistema de plugins.
+\end{itemize}
+
+\subsection{Usuarios Objetivo}
+
+\begin{itemize}
+\item Productores de música chiptune.
+\item Desarrolladores indie.
+\item Estudiantes de ingeniería.
+\end{itemize}
+
+%====================================================
+\section{Requisitos Funcionales}
+
+%------------------------------------------------
+\subsection{RF-01: Gestión de Proyectos}
+
+\begin{itemize}
+\item Crear proyecto nuevo.
+\item Guardar proyecto.
+\item Cargar proyecto.
+\item Configurar BPM.
+\item Configurar compás.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-02: Gestión de Pistas}
+
+\begin{itemize}
+\item Crear/eliminar pistas.
+\item Configurar instrumento por pista.
+\item Ajustar volumen y paneo.
+\item Asignar efectos.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-03: Step Sequencer}
+
+\begin{itemize}
+\item Crear patrones de 8, 16 y 32 pasos.
+\item Activar/desactivar pasos.
+\item Configurar longitud de nota.
+\item Soportar loop.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-04: Motor de Síntesis 8-bit}
+
+\begin{itemize}
+\item Generar onda cuadrada.
+\item Generar onda triangular.
+\item Generar ruido blanco.
+\item Aplicar envelope ADSR simplificado.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-05: Reproducción}
+
+\begin{itemize}
+\item Play.
+\item Stop.
+\item Loop continuo.
+\item Sincronización por clock interno.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-06: Sistema MIDI}
+
+\begin{itemize}
+\item Detectar dispositivos MIDI.
+\item Recibir Note On/Off.
+\item Recibir Control Change.
+\item Recibir Pitch Bend.
+\item Grabar MIDI en tiempo real.
+\item Cuantizar entrada MIDI.
+\item Sincronizar mediante MIDI Clock.
+\item Exportar archivo .mid.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-07: Sistema de Plugins}
+
+\begin{itemize}
+\item Cargar plugins dinámicamente.
+\item Registrar plugins automáticamente.
+\item Soportar:
+\begin{itemize}
+    \item Instrument Plugins
+    \item Effect Plugins
+    \item Utility Plugins
+\end{itemize}
+\item Insertar plugins en cadena de efectos.
+\item Eliminar plugins.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-08: Audio Routing}
+
+\begin{itemize}
+\item Enviar pista a Track Bus.
+\item Enviar pistas al Master Bus.
+\item Soportar cadena de efectos por pista.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-09: Exportación}
+
+\begin{itemize}
+\item Exportar WAV 8-bit.
+\item Exportar MIDI.
+\end{itemize}
+
+%------------------------------------------------
+\subsection{RF-10: Undo/Redo}
+
+\begin{itemize}
+\item Deshacer acción.
+\item Rehacer acción.
+\item Historial mínimo de 50 acciones.
+\end{itemize}
+
+%====================================================
+\section{Requisitos No Funcionales}
+
+\subsection{RNF-01: Arquitectura}
+
+\begin{itemize}
+\item Implementación bajo Clean Architecture.
+\item Aplicación de principios SOLID.
+\item Separación estricta GUI ↔ Dominio.
+\end{itemize}
+
+\subsection{RNF-02: Rendimiento}
+
+\begin{itemize}
+\item Latencia menor a 50ms.
+\item Procesamiento eficiente de buffers.
+\end{itemize}
+
+\subsection{RNF-03: Extensibilidad}
+
+\begin{itemize}
+\item Nuevos plugins sin modificar núcleo.
+\item Nuevos osciladores extensibles.
+\end{itemize}
+
+\subsection{RNF-04: Fiabilidad}
+
+\begin{itemize}
+\item Manejo robusto de excepciones.
+\item Fallos en plugins no detienen el sistema.
+\end{itemize}
+
+\subsection{RNF-05: Usabilidad}
+
+\begin{itemize}
+\item Interfaz clara.
+\item Flujo intuitivo de secuenciación.
+\end{itemize}
+
+\subsection{RNF-06: Portabilidad}
+
+\begin{itemize}
+\item Compatible con Windows 10+.
+\end{itemize}
+
+\subsection{RNF-07: Testabilidad}
+
+\begin{itemize}
+\item Cobertura mínima 75\%.
+\item Tests unitarios por capa.
+\end{itemize}
+
+%====================================================
+\section{Restricciones}
+
+\begin{itemize}
+\item Desarrollo inicial en Python.
+\item Uso de PyQt6 para GUI.
+\item Uso de sounddevice / PortAudio para audio.
+\item Uso de mido + rtmidi para MIDI.
+\end{itemize}
+
+%====================================================
+\section{Suposiciones}
+
+\begin{itemize}
+\item Usuario posee dispositivo MIDI opcional.
+\item Sistema ejecutado en hardware estándar.
+\end{itemize}
+
+%====================================================
+\section{Criterios de Aceptación Globales}
+
+\begin{itemize}
+\item El sistema reproduce patrones sin glitches.
+\item El sistema detecta dispositivos MIDI correctamente.
+\item Plugins pueden cargarse sin reiniciar la aplicación.
+\item Exportación WAV produce archivo reproducible.
+\end{itemize}
+
+%====================================================
+\section{Futuras Extensiones}
+
+\begin{itemize}
+\item Soporte VST.
+\item Render offline avanzado.
+\item Automatización avanzada.
+\item Sincronización externa avanzada.
+\end{itemize}
+
+%====================================================
+\section{Conclusión}
+
+Este documento define formalmente los requisitos del sistema JustBeat-DAW, garantizando una base sólida para su diseño, implementación y evolución futura como plataforma profesional de producción musical 8-bit.
+
+\end{document}

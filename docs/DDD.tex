@@ -1,0 +1,304 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tcolorbox}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{listings}
+
+\definecolor{primary}{HTML}{1F4E79}
+\definecolor{softblue}{HTML}{E8F1FA}
+
+\title{\textbf{\textcolor{primary}{JustBeat-DAW}}\\
+\large Documento Maestro de Ingeniería\\
+8-bit Digital Audio Workstation}
+\author{Equipo de Desarrollo}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+%====================================================
+\section{Visión General del Sistema}
+
+JustBeat-DAW es una estación de trabajo de audio digital enfocada en la producción musical 8-bit (chiptune), diseñada bajo principios formales de ingeniería de software.
+
+El sistema combina:
+\begin{itemize}
+    \item Síntesis digital retro.
+    \item Arquitectura limpia.
+    \item Extensibilidad mediante plugins.
+    \item Soporte MIDI profesional.
+\end{itemize}
+
+%====================================================
+\section{Arquitectura Global}
+
+\subsection{Modelo Arquitectónico}
+
+Se adopta una combinación de:
+
+\begin{itemize}
+    \item Clean Architecture
+    \item Arquitectura en Capas
+    \item Arquitectura basada en eventos
+    \item Audio Graph orientado a nodos
+\end{itemize}
+
+\subsection{Capas del Sistema}
+
+\begin{tcolorbox}[colback=softblue,colframe=primary,title=Capas Principales]
+
+\textbf{Domain Layer}  
+Entidades musicales, eventos MIDI, contratos de plugins.
+
+\textbf{Application Layer}  
+Casos de uso: reproducción, grabación, exportación, sincronización.
+
+\textbf{Infrastructure Layer}  
+Motor de audio, adaptadores MIDI, sistema de archivos, cargador de plugins.
+
+\textbf{Presentation Layer}  
+Interfaz gráfica (PyQt6) y controladores.
+
+\end{tcolorbox}
+
+Regla: Las dependencias apuntan siempre hacia el dominio.
+
+%====================================================
+\section{Modelo de Dominio Completo}
+
+\subsection{Entidades Principales}
+
+\begin{itemize}
+    \item Project
+    \item Track
+    \item Pattern
+    \item Step
+    \item Note
+    \item MIDIEvent
+    \item Oscillator
+    \item Envelope
+    \item AudioBuffer
+    \item PluginDescriptor
+    \item AudioNode
+    \item AudioBus
+\end{itemize}
+
+%====================================================
+\section{Audio Engine Profesional}
+
+\subsection{Componentes Internos}
+
+\begin{itemize}
+    \item Clock Engine
+    \item Step Scheduler
+    \item Oscillator Bank
+    \item Envelope Processor
+    \item Audio Mixer
+    \item Master Bus
+\end{itemize}
+
+\subsection{Audio Graph}
+
+El motor se basa en un grafo dirigido:
+
+\begin{tcolorbox}[colback=softblue,colframe=primary,title=Audio Flow]
+
+MIDI Input → Instrument Plugin → Effect Chain → Track Bus → Master Bus → Audio Output
+
+\end{tcolorbox}
+
+Cada nodo implementa:
+
+\begin{lstlisting}
+class AudioNode:
+    def process(self, buffer):
+        pass
+\end{lstlisting}
+
+%====================================================
+\section{Sistema MIDI Completo}
+
+\subsection{Funcionalidades}
+
+\begin{itemize}
+    \item Detección de dispositivos.
+    \item Grabación en tiempo real.
+    \item Cuantización automática.
+    \item MIDI Clock Sync.
+    \item Exportación .mid.
+\end{itemize}
+
+\subsection{Arquitectura MIDI}
+
+Se implementa un Adapter Pattern:
+
+\begin{lstlisting}
+class IMIDIAdapter:
+    def connect(self, device_id): pass
+    def listen(self): pass
+\end{lstlisting}
+
+Infraestructura recomendada:
+\begin{itemize}
+    \item mido
+    \item python-rtmidi
+\end{itemize}
+
+%====================================================
+\section{Sistema de Plugins Avanzado}
+
+\subsection{Plugin Host}
+
+El sistema implementa un Plugin Host desacoplado.
+
+\begin{itemize}
+    \item Carga dinámica con importlib.
+    \item Registro automático.
+    \item Validación por interfaz.
+\end{itemize}
+
+\subsection{Contrato Base}
+
+\begin{lstlisting}
+class IPlugin:
+    def initialize(self): pass
+    def process(self, buffer): pass
+    def shutdown(self): pass
+\end{lstlisting}
+
+\subsection{Tipos}
+
+\begin{itemize}
+    \item InstrumentPlugin
+    \item EffectPlugin
+    \item UtilityPlugin
+\end{itemize}
+
+\subsection{Aislamiento}
+
+Opcional:
+\begin{itemize}
+    \item multiprocessing para sandbox lógico.
+\end{itemize}
+
+%====================================================
+\section{Sistema de Routing y Buses}
+
+\subsection{Track Bus}
+
+Cada pista tiene:
+\begin{itemize}
+    \item Cadena de efectos.
+    \item Control de volumen.
+    \item Control de paneo.
+\end{itemize}
+
+\subsection{Master Bus}
+
+\begin{itemize}
+    \item Compresión global futura.
+    \item Limitador.
+    \item Exportación final.
+\end{itemize}
+
+%====================================================
+\section{Principios SOLID Aplicados}
+
+\subsection{S}
+AudioEngine no gestiona GUI.
+
+\subsection{O}
+Nuevos osciladores se agregan sin modificar el núcleo.
+
+\subsection{L}
+Todo Oscillator respeta interfaz base.
+
+\subsection{I}
+Interfaces pequeñas:
+\begin{itemize}
+    \item IAudioNode
+    \item IMIDIAdapter
+    \item IPlugin
+\end{itemize}
+
+\subsection{D}
+Application depende de abstracciones.
+
+%====================================================
+\section{Patrones de Diseño Implementados}
+
+\begin{itemize}
+    \item Factory → Creación de osciladores.
+    \item Strategy → Algoritmos de síntesis.
+    \item Observer → Eventos MIDI.
+    \item Adapter → Integración MIDI.
+    \item Repository → Persistencia.
+    \item Command → Undo/Redo.
+    \item Dependency Injection → Desacoplamiento.
+\end{itemize}
+
+%====================================================
+\section{Sistema Undo/Redo}
+
+Se implementa Command Pattern formal:
+
+\begin{lstlisting}
+class ICommand:
+    def execute(self): pass
+    def undo(self): pass
+\end{lstlisting}
+
+Acciones soportadas:
+\begin{itemize}
+    \item Agregar nota.
+    \item Eliminar nota.
+    \item Cambiar BPM.
+    \item Insertar plugin.
+\end{itemize}
+
+%====================================================
+\section{Requisitos No Funcionales Avanzados}
+
+\begin{itemize}
+    \item Latencia < 50ms.
+    \item Arquitectura extensible.
+    \item Cobertura mínima 75\%.
+    \item Manejo robusto de excepciones.
+    \item Compatibilidad Windows.
+\end{itemize}
+
+%====================================================
+\section{Plan de Pruebas}
+
+\subsection{Unitarias}
+Dominio y Application.
+
+\subsection{Integración}
+Audio Engine + Plugins.
+
+\subsection{Stress}
+Prueba con múltiples pistas activas.
+
+%====================================================
+\section{Escalabilidad Futura}
+
+\begin{itemize}
+    \item Soporte VST conceptual.
+    \item Motor C++ desacoplado.
+    \item Render offline avanzado.
+    \item Sincronización externa avanzada.
+\end{itemize}
+
+%====================================================
+\section{Conclusión}
+
+JustBeat-DAW está diseñado como un sistema profesional modular, aplicando principios formales de ingeniería de software a la síntesis digital 8-bit, garantizando extensibilidad, mantenibilidad y evolución futura hacia un producto comercial real.
+
+\end{document}
