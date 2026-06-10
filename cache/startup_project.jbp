@@ -1,0 +1,157 @@
+{
+  "id": "80511981-731a-419c-b774-7bd00e938c9b",
+  "name": "Untitled",
+  "bpm": 120,
+  "time_signature": {
+    "numerator": 4,
+    "denominator": 4
+  },
+  "pattern_length": 16,
+  "created_at": "2026-06-10T13:19:37.382160",
+  "modified_at": "2026-06-10T13:19:37.384905",
+  "file_path": null,
+  "tracks": [
+    {
+      "id": "e9f59dd6-7d2e-42ec-99bd-23e280470cee",
+      "name": "Square Lead",
+      "volume": 1.0,
+      "pan": 0.0,
+      "muted": false,
+      "solo": false,
+      "instrument_id": null,
+      "effect_chain": [],
+      "patterns": [
+        {
+          "id": "a078804a-2636-4909-8106-36ee6401b11d",
+          "name": "Pattern 1",
+          "length": 16,
+          "steps": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "id": "412c5849-9a4d-43a0-b91b-2db792a62a16",
+      "name": "Triangle Bass",
+      "volume": 1.0,
+      "pan": 0.0,
+      "muted": false,
+      "solo": false,
+      "instrument_id": null,
+      "effect_chain": [],
+      "patterns": [
+        {
+          "id": "ab6d5bbf-dc4b-43ef-b3e0-80835c81f541",
+          "name": "Pattern 1",
+          "length": 16,
+          "steps": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "id": "35394b96-9de8-4115-bcc3-912f16ec20d1",
+      "name": "Noise Drums",
+      "volume": 1.0,
+      "pan": 0.0,
+      "muted": false,
+      "solo": false,
+      "instrument_id": null,
+      "effect_chain": [],
+      "patterns": [
+        {
+          "id": "2c0f0c80-c1b8-49ff-b0b4-172f10f08f77",
+          "name": "Pattern 1",
+          "length": 16,
+          "steps": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6afdb33c-84cb-4b1e-a1f7-4d3aa8f34bc8",
+      "name": "Saw Melody",
+      "volume": 1.0,
+      "pan": 0.0,
+      "muted": false,
+      "solo": false,
+      "instrument_id": null,
+      "effect_chain": [],
+      "patterns": [
+        {
+          "id": "edfd83f7-5bd6-408b-b2d4-3a995d858065",
+          "name": "Pattern 1",
+          "length": 16,
+          "steps": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ]
+        }
+      ]
+    }
+  ],
+  "patterns": [],
+  "active_pattern_index": 0
+}
