@@ -1,0 +1,266 @@
+/* Main Window Styles */
+
+QMainWindow {
+    background-color: #1a1a1a;
+}
+
+/* Menu Bar */
+QMenuBar {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border-bottom: 1px solid #333333;
+    padding: 2px;
+}
+
+QMenuBar::item {
+    background-color: transparent;
+    padding: 4px 8px;
+}
+
+QMenuBar::item:selected {
+    background-color: #444444;
+}
+
+QMenuBar::item:pressed {
+    background-color: #555555;
+}
+
+/* Menu */
+QMenu {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    border: 1px solid #444444;
+    padding: 4px;
+}
+
+QMenu::item {
+    padding: 6px 24px 6px 12px;
+}
+
+QMenu::item:selected {
+    background-color: #444444;
+}
+
+QMenu::separator {
+    height: 1px;
+    background-color: #444444;
+    margin: 4px 0px;
+}
+
+/* Tool Bar */
+QToolBar {
+    background-color: #2a2a2a;
+    border: none;
+    spacing: 3px;
+    padding: 3px;
+}
+
+QToolBar QToolButton {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+    border-radius: 3px;
+    padding: 5px 10px;
+}
+
+QToolBar QToolButton:hover {
+    background-color: #444444;
+}
+
+QToolBar QToolButton:pressed {
+    background-color: #555555;
+}
+
+QToolBar QToolButton:disabled {
+    color: #666666;
+    background-color: #2a2a2a;
+}
+
+/* Status Bar */
+QStatusBar {
+    background-color: #2a2a2a;
+    color: #888888;
+    border-top: 1px solid #444444;
+}
+
+QStatusBar QLabel {
+    color: #888888;
+}
+
+/* Push Buttons */
+QPushButton {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+    border-radius: 4px;
+    padding: 6px 12px;
+    min-width: 60px;
+}
+
+QPushButton:hover {
+    background-color: #444444;
+}
+
+QPushButton:pressed {
+    background-color: #555555;
+}
+
+QPushButton:disabled {
+    color: #666666;
+    background-color: #2a2a2a;
+}
+
+/* Play Button */
+QPushButton#playButton {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+QPushButton#playButton:hover {
+    background-color: #45a049;
+}
+
+/* Stop Button */
+QPushButton#stopButton {
+    background-color: #f44336;
+    color: white;
+    font-weight: bold;
+}
+
+QPushButton#stopButton:hover {
+    background-color: #da190b;
+}
+
+/* Record Button */
+QPushButton#recordButton {
+    background-color: #555555;
+    color: white;
+    font-weight: bold;
+}
+
+QPushButton#recordButton:hover {
+    background-color: #666666;
+}
+
+QPushButton#recordButton:pressed {
+    background-color: #ff0000;
+}
+
+/* Sliders */
+QSlider::groove:horizontal {
+    border: 1px solid #444444;
+    height: 6px;
+    background: #333333;
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background: #00aaff;
+    width: 14px;
+    margin: -5px 0;
+    border-radius: 7px;
+}
+
+QSlider::groove:vertical {
+    border: 1px solid #444444;
+    width: 6px;
+    background: #333333;
+    border-radius: 3px;
+}
+
+QSlider::handle:vertical {
+    background: #00aaff;
+    height: 14px;
+    margin: 0 -5px;
+    border-radius: 7px;
+}
+
+/* Combo Box */
+QComboBox {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+QComboBox:hover {
+    background-color: #444444;
+}
+
+QComboBox::drop-down {
+    border: none;
+    width: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color: #2a2a2a;
+    color: #ffffff;
+    selection-background-color: #444444;
+    border: 1px solid #444444;
+}
+
+/* Spin Box */
+QSpinBox, QDoubleSpinBox {
+    background-color: #333333;
+    color: #ffffff;
+    border: 1px solid #444444;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+QSpinBox::up-button, QDoubleSpinBox::up-button {
+    background-color: #444444;
+    border-left: 1px solid #444444;
+}
+
+QSpinBox::down-button, QDoubleSpinBox::down-button {
+    background-color: #444444;
+    border-left: 1px solid #444444;
+}
+
+/* Labels */
+QLabel {
+    color: #ffffff;
+    background-color: transparent;
+}
+
+QLabel#titleLabel {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QLabel#accentLabel {
+    color: #00aaff;
+}
+
+/* Frames */
+QFrame {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+}
+
+QFrame#panelFrame {
+    background-color: #222222;
+    border: none;
+}
+
+/* Scroll Area */
+QScrollArea {
+    background-color: #1a1a1a;
+    border: none;
+}
+
+/* Splitter */
+QSplitter::handle {
+    background-color: #333333;
+}
+
+QSplitter::handle:horizontal {
+    width: 2px;
+}
+
+QSplitter::handle:vertical {
+    height: 2px;
+}
